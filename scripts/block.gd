@@ -3,7 +3,6 @@ extends Node2D
 enum BREAK_DIFFICULTY { EASY, MEDIUM, HARD }
 enum BREAK_TOOL { PICKAXE, AXE, SHOVEL }
 
-@export var breakable := true
 @export var break_difficulty := BREAK_DIFFICULTY.EASY
 @export var correct_tool := BREAK_TOOL.PICKAXE
 
