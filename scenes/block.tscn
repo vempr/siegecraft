@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsqbc1tsk3dko"]
+
+[ext_resource type="Script" uid="uid://bcln8f63w1df0" path="res://scripts/block.gd" id="1_8r6n6"]
+[ext_resource type="Texture2D" uid="uid://cr6ci5qn1k2va" path="res://assets/aseprite/blocks/grass.png" id="2_cgrg5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgrg5"]
+size = Vector2(128, 128)
+
+[node name="Block" type="StaticBody2D"]
+script = ExtResource("1_8r6n6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_cgrg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cgrg5")
