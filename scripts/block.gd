@@ -9,6 +9,13 @@ var correct_tool: GLOBAL.BREAK_TOOL
 @onready var player := get_parent().get_node("Player")
 @onready var DroppedObjectScene := preload("res://scenes/dropped_object.tscn")
 
+@onready var breaking_wood = get_node("../SFX/BreakingWood")
+@onready var wood_breaking = get_node("../SFX/WoodBreaking")
+@onready var breaking_stone = get_node("../SFX/BreakingStone")
+@onready var stone_breaking = get_node("../SFX/StoneBreaking")
+@onready var dirt_breaking = get_node("../SFX/DirtBreaking")
+@onready var leaf_breaking = get_node("../SFX/LeafBreaking")
+
 var can_mine := false
 var is_mining := false
 
@@ -37,12 +44,27 @@ func _process(_delta: float) -> void:
 		is_mining = true
 		breaking_sprite.visible = true
 		breaking_sprite.play("mine")
+		
+		match block:
+			GLOBAL.BLOCK.WOOD_LOG:
+				breaking_wood.play(1.0)
+			GLOBAL.BLOCK.GRASS:
+				pass
+			GLOBAL.BLOCK.DIRT:
+				pass
+			GLOBAL.BLOCK.LEAF:
+				pass
+			_:
+				breaking_stone.play(1.0)
 	
 	elif (!Input.is_action_pressed("mine") || !can_mine) && is_mining:
 		player.mining_toggled.emit(false)
 		is_mining = false
 		breaking_sprite.visible = false
 		breaking_sprite.stop()
+		
+		breaking_wood.stop()
+		breaking_stone.stop()
 
 
 func _on_mouse_entered() -> void:
@@ -76,3 +98,17 @@ func _on_animated_sprite_animation_finished() -> void:
 	for i in range(3):
 		await tree.physics_frame
 	queue_free()
+	
+	match block:
+		GLOBAL.BLOCK.WOOD_LOG:
+			wood_breaking.play(0.15)
+			breaking_wood.stop()
+		GLOBAL.BLOCK.GRASS:
+			dirt_breaking.play(1.15)
+		GLOBAL.BLOCK.DIRT:
+			dirt_breaking.play(1.15)
+		GLOBAL.BLOCK.LEAF:
+			leaf_breaking.play(13.0)
+		_:
+			stone_breaking.play()
+			breaking_stone.stop()

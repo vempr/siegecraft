@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://23lg6rcgfh81"
+path="res://.godot/imported/Breaking a Wood Sound Effect [Minecraft].mp3-ca90a778a69d26fd21263c4c12a359f6.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Breaking a Wood Sound Effect [Minecraft].mp3"
+dest_files=["res://.godot/imported/Breaking a Wood Sound Effect [Minecraft].mp3-ca90a778a69d26fd21263c4c12a359f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

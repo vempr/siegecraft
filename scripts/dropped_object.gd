@@ -3,6 +3,8 @@ extends RigidBody2D
 var object = GLOBAL.BLOCK.DIRT # default object
 @export var type: GLOBAL.OBJECT
 
+@onready var item_pick_up = get_node("../SFX/ItemPickUp")
+
 
 func _ready() -> void:
 	position.x += randi_range(-10, 10)
@@ -20,6 +22,7 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		pickup_object()
 		queue_free()
+		item_pick_up.play()
 
 
 func pickup_object() -> void:

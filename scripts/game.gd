@@ -40,6 +40,7 @@ func spawn_player() -> void:
 
 func _process(_delta: float) -> void:
 	if STATE.hunger <= 0.0:
+		$SFX/HitSound.play()
 		%Player.visible = false
 		%GameOver/Label.text = "you died of hunger!"
 		%GameOver.visible = true
@@ -47,6 +48,7 @@ func _process(_delta: float) -> void:
 	
 	var ao = STATE.active_object
 	if Input.is_action_just_pressed("eat") && STATE.hunger < 6 && ao.object == GLOBAL.ITEM.APPLE && ao.quantity > 0:
+		$SFX/Eat.play()
 		STATE.hunger = min(STATE.hunger + 2, 6)
 		STATE.active_object.quantity -= 1
 		update_slot_state()
@@ -60,6 +62,7 @@ func _process(_delta: float) -> void:
 			STATE.active_object.quantity -= 1
 			place_block_at_grid(grid_x, grid_y, ao.object)
 			update_slot_state()
+			$SFX/PlaceItem.play()
 
 
 func is_valid_placement_position(grid_x: int, grid_y: int) -> bool:
@@ -114,6 +117,7 @@ func _on_hunger_timer_timeout() -> void:
 
 func _on_void_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		$SFX/HitSound.play()
 		%Player.visible = false
 		%GameOver/Label.text = "you died to the void!"
 		%GameOver.visible = true
