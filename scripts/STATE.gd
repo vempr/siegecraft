@@ -2,6 +2,9 @@ extends Node
 
 var map := [[], [], [], []]
 
+var health := 4.5
+var hunger := 6.0
+
 
 func _ready() -> void:
 	# layer 1
@@ -40,4 +43,3 @@ func _ready() -> void:
 	for i in range(100):
 		bedrock_arr.append(GLOBAL.BLOCK.BEDROCK)
 	map.append(bedrock_arr)
-	

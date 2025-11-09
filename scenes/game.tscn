@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbu5qlsbyx33h" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dg41qxbxim2w7" path="res://scenes/player.tscn" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://r4k5bmogd26k" path="res://scripts/hud.gd" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d3xgvp86ms28m" path="res://scenes/hud.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -14,14 +14,14 @@ position = Vector2(336, 200)
 [node name="Blocks" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("3_lnu2h")
-
-[node name="Coordinates" type="Label" parent="HUD"]
+[node name="HUD" parent="." instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 59.0
-offset_bottom = 55.0
-text = "x: 0.01
-y: 0.01"
+
+[node name="HungerTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="inventory_toggled" from="." to="Player" method="_on_game_inventory_toggled"]
+[connection signal="inventory_toggled" from="." to="HUD" method="_on_game_inventory_toggled"]
+[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
+[connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]

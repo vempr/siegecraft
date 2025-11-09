@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED := 400.0
 const JUMP_VELOCITY := -700.0
+var in_inventory := false
 
 
 func _ready() -> void:
@@ -14,6 +15,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity() * 2.5 * delta
+	
+	if in_inventory:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -54,3 +60,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
+
+
+func _on_game_inventory_toggled(is_toggled: bool) -> void:
+	in_inventory = is_toggled

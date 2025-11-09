@@ -1,8 +1,11 @@
 extends Node2D
 
+signal inventory_toggled(is_toggled: bool)
+
 @onready var BlockScene := preload("res://scenes/block.tscn")
 const TILE_SIZE := 96
 const MAP_SIZE_X := TILE_SIZE * 100
+var inventory_open := false
 
 
 func _ready() -> void:
@@ -32,3 +35,13 @@ func spawn_player() -> void:
 
 func _process(_delta: float) -> void:
 	pass
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_inventory"):
+		inventory_open = !inventory_open
+		inventory_toggled.emit(inventory_open)
+
+
+func _on_hunger_timer_timeout() -> void:
+	STATE.hunger -= 0.5
