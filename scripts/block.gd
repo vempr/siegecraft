@@ -5,11 +5,12 @@ enum BREAK_TOOL { PICKAXE, AXE, SHOVEL }
 
 @export var break_difficulty := BREAK_DIFFICULTY.EASY
 @export var correct_tool := BREAK_TOOL.PICKAXE
+@export var block := GLOBAL.BLOCK.COBBLESTONE
+@onready var sprite := %Sprite
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	sprite.texture = load(GLOBAL.block_textures.get(block))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

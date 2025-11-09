@@ -2,18 +2,26 @@
 
 [ext_resource type="Script" uid="uid://dbu5qlsbyx33h" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dg41qxbxim2w7" path="res://scenes/player.tscn" id="2_yqjtg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
-size = Vector2(696, 88)
+[ext_resource type="Script" uid="uid://r4k5bmogd26k" path="res://scripts/hud.gd" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(336, 184)
+unique_name_in_owner = true
+position = Vector2(336, 200)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Blocks" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(412, 308)
-shape = SubResource("RectangleShape2D_yqjtg")
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_lnu2h")
+
+[node name="Coordinates" type="Label" parent="HUD"]
+unique_name_in_owner = true
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 55.0
+text = "x: 0.01
+y: 0.01"

@@ -61,6 +61,68 @@ enum ITEM {
 	SWORD_WOODEN,
 }
 
+var block_textures := {
+	BLOCK.BEDROCK: "res://assets/aseprite/blocks/bedrock.png",
+	BLOCK.CHEST: "res://assets/aseprite/blocks/chest.png",
+	BLOCK.COAL_ORE: "res://assets/aseprite/blocks/coal-ore.png",
+	BLOCK.COBBLESTONE: "res://assets/aseprite/blocks/cobblestone.png",
+	BLOCK.CRAFTING_TABLE: "res://assets/aseprite/blocks/crafting-table.png",
+	BLOCK.DEEPSLATE_BRICK: "res://assets/aseprite/blocks/deepslate-brick.png",
+	BLOCK.DIAMOND_ORE: "res://assets/aseprite/blocks/diamond-ore.png",
+	BLOCK.DIRT: "res://assets/aseprite/blocks/dirt.png",
+	BLOCK.END_PORTAL_FRAME: "res://assets/aseprite/blocks/end-portal-frame.png",
+	BLOCK.END_PORTAL_FRAME_EYE: "res://assets/aseprite/blocks/end-portal-frame-eye.png",
+	BLOCK.END_STONE: "res://assets/aseprite/blocks/end-stone.png",
+	BLOCK.FURNACE: "res://assets/aseprite/blocks/furnace.png",
+	BLOCK.GOLD_BLOCK: "res://assets/aseprite/blocks/gold-block.png",
+	BLOCK.GOLD_ORE: "res://assets/aseprite/blocks/gold-ore.png",
+	BLOCK.GRASS: "res://assets/aseprite/blocks/grass.png",
+	BLOCK.IRON_ORE: "res://assets/aseprite/blocks/iron-ore.png",
+	BLOCK.LAVA: "res://assets/aseprite/blocks/lava.png",
+	BLOCK.LEAF: "res://assets/aseprite/blocks/leaf.png",
+	BLOCK.NETHER_BRICK: "res://assets/aseprite/blocks/nether-brick.png",
+	BLOCK.NETHERRACK: "res://assets/aseprite/blocks/netherrack.png",
+	BLOCK.OBSIDIAN: "res://assets/aseprite/blocks/obsidian.png",
+	BLOCK.STONE_BRICK: "res://assets/aseprite/blocks/stone-brick.png",
+	BLOCK.STONE: "res://assets/aseprite/blocks/stone.png",
+	BLOCK.WATER: "res://assets/aseprite/blocks/water.png",
+	BLOCK.WOOD_LOG: "res://assets/aseprite/blocks/wood-log.png",
+	BLOCK.WOOD_PLANK: "res://assets/aseprite/blocks/wood-plank.png",
+}
+
+var item_textures := {
+	ITEM.APPLE: "res://assets/aseprite/items/apple.png",
+	ITEM.AXE_DIAMOND: "res://assets/aseprite/items/axe-diamond.png",
+	ITEM.AXE_GOLDEN: "res://assets/aseprite/items/axe-golden.png",
+	ITEM.AXE_IRON: "res://assets/aseprite/items/axe-iron.png",
+	ITEM.AXE_STONE: "res://assets/aseprite/items/axe-stone.png",
+	ITEM.AXE_WOODEN: "res://assets/aseprite/items/axe-wooden.png",
+	ITEM.BLAZE_POWDER: "res://assets/aseprite/items/blaze-powder.png",
+	ITEM.COAL: "res://assets/aseprite/items/coal.png",
+	ITEM.DIAMOND: "res://assets/aseprite/items/diamond.png",
+	ITEM.ENDER_EYE: "res://assets/aseprite/items/ender-eye.png",
+	ITEM.ENDER_PEARL: "res://assets/aseprite/items/ender-pearl.png",
+	ITEM.GOLD: "res://assets/aseprite/items/gold.png",
+	ITEM.IRON: "res://assets/aseprite/items/iron.png",
+	ITEM.PICKAXE_DIAMOND: "res://assets/aseprite/items/pickaxe-diamond.png",
+	ITEM.PICKAXE_GOLDEN: "res://assets/aseprite/items/pickaxe-golden.png",
+	ITEM.PICKAXE_IRON: "res://assets/aseprite/items/pickaxe-iron.png",
+	ITEM.PICKAXE_STONE: "res://assets/aseprite/items/pickaxe-stone.png",
+	ITEM.PICKAXE_WOODEN: "res://assets/aseprite/items/pickaxe-wooden.png",
+	ITEM.SHOVEL_DIAMOND: "res://assets/aseprite/items/shovel-diamond.png",
+	ITEM.SHOVEL_GOLD: "res://assets/aseprite/items/shovel-gold.png",
+	ITEM.SHOVEL_IRON: "res://assets/aseprite/items/shovel-iron.png",
+	ITEM.SHOVEL_STONE: "res://assets/aseprite/items/shovel-stone.png",
+	ITEM.SHOVEL_WOODEN: "res://assets/aseprite/items/shovel-wooden.png",
+	ITEM.STICK: "res://assets/aseprite/items/stick.png",
+	ITEM.SWORD_DIAMOND: "res://assets/aseprite/items/sword-diamond.png",
+	ITEM.SWORD_GOLDEN: "res://assets/aseprite/items/sword-golden.png",
+	ITEM.SWORD_IRON: "res://assets/aseprite/items/sword-iron.png",
+	ITEM.SWORD_STONE: "res://assets/aseprite/items/sword-stone.png",
+	ITEM.SWORD_WOODEN: "res://assets/aseprite/items/sword-wooden.png",
+}
+
+
 var blocks
 var items
 

@@ -19,6 +19,11 @@ run/main_scene="uid://c7lkwkw7fpgty"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GLOBAL="*res://scripts/GLOBAL.gd"
+STATE="*res://scripts/STATE.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -56,4 +61,3 @@ jump={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.3647059, 0.5764706, 1, 1)
