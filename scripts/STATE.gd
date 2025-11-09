@@ -1,6 +1,6 @@
 extends Node
 
-var map := [[], [], [], []]
+var map := [[], [], [], [], [], [], [], []]
 var inventory := []
 
 var health := 4.5
@@ -8,8 +8,46 @@ var hunger := 6.0
 
 
 func _ready() -> void:
+	generate_trees()
 	generate_floor()
 	reset_inventory()
+
+
+func generate_trees() -> void:
+	var tree_positions := []
+
+	for i in range(100):
+		if randf() < 0.1:
+			tree_positions.append(i)
+
+	for x in tree_positions:
+		var height := randi_range(4, 6)
+		var ground_y := 8
+		
+		for y_offset in range(1, height + 1):
+			var row_index = ground_y - y_offset
+			
+			if row_index < 0:
+				break
+			
+			while map[row_index].size() <= x:
+				map[row_index].append(null)
+			map[row_index][x] = GLOBAL.BLOCK.WOOD_LOG
+
+		var leaves_bottom := ground_y - height
+		for lx in range(x - 1, x + 2):
+			if lx < 0 or lx >= 100:
+				continue
+			for ly in range(leaves_bottom - 2, leaves_bottom + 1):
+				if ly < 0:
+					continue
+				
+				while map[ly].size() <= lx:
+					map[ly].append(null)
+				
+				if map[ly][lx] == null:
+					map[ly][lx] = GLOBAL.BLOCK.LEAF
+
 
 
 func generate_floor() -> void:

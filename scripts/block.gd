@@ -54,4 +54,5 @@ func _on_animated_sprite_animation_finished() -> void:
 	dropped_block.position = position
 	get_parent().add_child(dropped_block)
 	
+	await get_tree().physics_frame
 	queue_free()

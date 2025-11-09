@@ -20,6 +20,8 @@ func render_blocks() -> void:
 		
 		for x in range(len(STATE.map[y])):
 			var block_type = STATE.map[y][x]
+			if block_type == null:
+				continue
 			
 			var block_instance = BlockScene.instantiate()
 			block_instance.block = block_type

@@ -10,7 +10,7 @@ script = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
-position = Vector2(336, 200)
+position = Vector2(959, -265)
 
 [node name="HUD" parent="." instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
