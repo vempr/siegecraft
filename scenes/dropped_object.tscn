@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0e4gysfdprn7"]
+
+[ext_resource type="Script" uid="uid://cymoga3gv8uk" path="res://scripts/dropped_object.gd" id="1_slrel"]
+[ext_resource type="Texture2D" uid="uid://cr6ci5qn1k2va" path="res://assets/aseprite/blocks/grass.png" id="2_vclar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxeai"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyu5v"]
+size = Vector2(70, 70)
+
+[node name="DroppedObject" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_slrel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nxeai")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_vclar")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("RectangleShape2D_kyu5v")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

@@ -14,6 +14,7 @@ func _ready() -> void:
 	%Walk.visible = false
 	%IdleBody.flip_h = false
 	%WalkingBody.flip_h = false
+	%Mine.visible = true
 
 
 func _physics_process(delta: float) -> void:
@@ -45,6 +46,7 @@ func _physics_process(delta: float) -> void:
 		%SpriteAF.flip_h = false
 		%SpriteLB.flip_h = false
 		%SpriteLF.flip_h = false
+		%SpriteMA.flip_h = false
 	elif direction < 0:
 		%WalkingBody.flip_h = true
 		%IdleBody.flip_h = true
@@ -52,6 +54,20 @@ func _physics_process(delta: float) -> void:
 		%SpriteAF.flip_h = true
 		%SpriteLB.flip_h = true
 		%SpriteLF.flip_h = true
+		%SpriteMA.flip_h = true
+	
+	if direction != 0:
+		%Mine.visible = false
+		%MiningToolRight.visible = false
+		%MiningToolLeft.visible = false
+	else:
+		%Mine.visible = true
+		if %SpriteMA.flip_h:
+			%MiningToolRight.visible = false
+			%MiningToolLeft.visible = true
+		else:
+			%MiningToolRight.visible = true
+			%MiningToolLeft.visible = false
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -66,10 +82,10 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	%MiningArm.look_at(get_global_mouse_position())
+	%MiningArm.rotation -= deg_to_rad(90)
+	
 	if is_mining:
-		%MiningArm.look_at(get_global_mouse_position())
-		%MiningArm.rotation -= deg_to_rad(90)
-		
 		mining_time += delta
 		%MiningArm.rotation += sin(mining_time * 30) * deg_to_rad(20)
 	else:
@@ -87,13 +103,9 @@ func _on_mining_toggled(m: bool) -> void:
 		%IdleBody.visible = true
 		%AnimationPlayerWalk.stop()
 		%AnimationPlayerWalk.play("RESET")
-		
-		%Mine.visible = true
 		# %AnimationPlayerMine.play("mine")
 	else:
 		%Walk.visible = true
 		%IdleBody.visible = false
-		
-		%Mine.visible = false
 		# %AnimationPlayerMine.stop()
 		# %AnimationPlayerMine.play("RESET")

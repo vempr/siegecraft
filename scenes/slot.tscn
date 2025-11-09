@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://coldsff0w48pa"]
+
+[ext_resource type="Script" uid="uid://diblo6b54b2p5" path="res://scripts/slot.gd" id="1_ic0fu"]
+[ext_resource type="FontFile" uid="uid://bx0j27hf5cdjr" path="res://assets/fonts/Minecraft.ttf" id="2_vqyee"]
+[ext_resource type="Texture2D" uid="uid://c7mcuca0d34uw" path="res://assets/aseprite/blocks/coal-ore.png" id="3_vqyee"]
+
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ic0fu")
+
+[node name="Quantity" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = 27.0
+offset_right = 43.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("2_vqyee")
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_vqyee")

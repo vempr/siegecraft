@@ -1,5 +1,7 @@
 extends Node
 
+enum OBJECT { BLOCK, ITEM }
+
 enum BLOCK {
 	BEDROCK,
 	CHEST,
@@ -199,7 +201,8 @@ func _ready() -> void:
 			"mineable": true,
 			"recipe": null,
 			"break_difficulty": BREAK_DIFFICULTY.HARD,
-			"break_tool": BREAK_TOOL.PICKAXE
+			"break_tool": BREAK_TOOL.PICKAXE,
+			"breaking_result_type": OBJECT.ITEM,
 		},
 		BLOCK.DIRT: {
 			"as_smelter": false,
@@ -306,7 +309,8 @@ func _ready() -> void:
 			"mineable": true,
 			"recipe": null,
 			"break_difficulty": BREAK_DIFFICULTY.EASY,
-			"break_tool": BREAK_TOOL.SHOVEL
+			"break_tool": BREAK_TOOL.SHOVEL,
+			"breaking_result_type": OBJECT.ITEM,
 		},
 		BLOCK.NETHER_BRICK: {
 			"as_smelter": false,

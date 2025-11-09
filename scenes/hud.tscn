@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3xgvp86ms28m"]
+[gd_scene load_steps=11 format=3 uid="uid://d3xgvp86ms28m"]
 
 [ext_resource type="Script" uid="uid://r4k5bmogd26k" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://dj460ogaw3rg7" path="res://assets/aseprite/ui/bar.png" id="2_5ysmq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmd6j8fmvoxx0" path="res://assets/aseprite/ui/hunger-full.png" id="4_mphia"]
 [ext_resource type="Texture2D" uid="uid://h3uj43hv4ucl" path="res://assets/aseprite/ui/heart-half.png" id="4_uo2fv"]
 [ext_resource type="Texture2D" uid="uid://ciy1kkyht1qgx" path="res://assets/aseprite/ui/hunger-half.png" id="5_0m4u7"]
+[ext_resource type="PackedScene" uid="uid://coldsff0w48pa" path="res://scenes/slot.tscn" id="9_0m4u7"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_oo0fn")
@@ -310,9 +311,69 @@ texture = ExtResource("3_6fi6k")
 scale = Vector2(5, 5)
 texture = ExtResource("4_uo2fv")
 
+[node name="Slots" type="Control" parent="Bar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BarSlot1" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -364.0
+offset_right = -364.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot2" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -259.0
+offset_right = -259.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot3" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -154.0
+offset_right = -154.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot4" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -49.0
+offset_right = -49.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot5" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 56.0
+offset_right = 56.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot6" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 161.0
+offset_right = 161.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot7" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 266.0
+offset_right = 266.0
+metadata/_edit_group_ = true
+
+[node name="BarSlot8" parent="Bar/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 371.0
+offset_right = 371.0
+metadata/_edit_group_ = true
+
 [node name="Inventory" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -325,9 +386,173 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_group_ = true
 
 [node name="InventorySprite" type="Sprite2D" parent="Inventory"]
 z_index = 1
 scale = Vector2(7, 7)
 texture = ExtResource("3_5ysmq")
+
+[node name="Slots" type="Control" parent="Inventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventorySlot1" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -364.0
+offset_top = 42.0
+offset_right = -364.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot2" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -259.0
+offset_top = 42.0
+offset_right = -259.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot3" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -154.0
+offset_top = 42.0
+offset_right = -154.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot4" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -49.0
+offset_top = 42.0
+offset_right = -49.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot5" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 56.0
+offset_top = 42.0
+offset_right = 56.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot6" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 161.0
+offset_top = 42.0
+offset_right = 161.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot7" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 266.0
+offset_top = 42.0
+offset_right = 266.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot8" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 371.0
+offset_top = 42.0
+offset_right = 371.0
+offset_bottom = 42.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot9" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -364.0
+offset_top = 147.0
+offset_right = -364.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot10" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -259.0
+offset_top = 147.0
+offset_right = -259.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot11" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -154.0
+offset_top = 147.0
+offset_right = -154.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot12" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -49.0
+offset_top = 147.0
+offset_right = -49.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot13" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 56.0
+offset_top = 147.0
+offset_right = 56.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot14" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 161.0
+offset_top = 147.0
+offset_right = 161.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot15" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 266.0
+offset_top = 147.0
+offset_right = 266.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true
+
+[node name="InventorySlot16" parent="Inventory/Slots" instance=ExtResource("9_0m4u7")]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 371.0
+offset_top = 147.0
+offset_right = 371.0
+offset_bottom = 147.0
+metadata/_edit_group_ = true

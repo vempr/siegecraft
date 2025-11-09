@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7lkwkw7fpgty"]
+[gd_scene load_steps=5 format=3 uid="uid://c7lkwkw7fpgty"]
 
 [ext_resource type="Script" uid="uid://dbu5qlsbyx33h" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dg41qxbxim2w7" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://d3xgvp86ms28m" path="res://scenes/hud.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://0e4gysfdprn7" path="res://scenes/dropped_object.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -17,6 +18,9 @@ unique_name_in_owner = true
 [node name="HungerTimer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
+
+[node name="DroppedBlock" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(1079, 145)
 
 [connection signal="inventory_toggled" from="." to="Player" method="_on_game_inventory_toggled"]
 [connection signal="inventory_toggled" from="." to="HUD" method="_on_game_inventory_toggled"]

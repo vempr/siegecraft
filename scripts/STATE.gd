@@ -1,12 +1,18 @@
 extends Node
 
 var map := [[], [], [], []]
+var inventory := []
 
 var health := 4.5
 var hunger := 6.0
 
 
 func _ready() -> void:
+	generate_floor()
+	reset_inventory()
+
+
+func generate_floor() -> void:
 	# layer 1
 	var grass_arr := []
 	for i in range(100):
@@ -43,3 +49,17 @@ func _ready() -> void:
 	for i in range(100):
 		bedrock_arr.append(GLOBAL.BLOCK.BEDROCK)
 	map.append(bedrock_arr)
+
+
+func reset_inventory() -> void:
+	inventory = []
+	
+	for i in range(2):
+		var arr := []
+		for j in range(8):
+			arr.append({
+				"object": null,
+				"type": null,
+				"quantity": 0,
+			})
+		inventory.append(arr)

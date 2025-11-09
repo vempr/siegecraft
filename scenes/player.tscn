@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg41qxbxim2w7"]
+[gd_scene load_steps=16 format=3 uid="uid://dg41qxbxim2w7"]
 
 [ext_resource type="Script" uid="uid://qu3xn0xv4ucg" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://q3lpfa8ofprr" path="res://assets/aseprite/character/orph-idle.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bws110lxekq1v" path="res://assets/aseprite/character/orph-legless.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cshndfbyvvage" path="res://assets/aseprite/character/orph-limb.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://djrygdkegou66" path="res://assets/aseprite/items/pickaxe-diamond.png" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(32, 152)
@@ -57,59 +58,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_dqkch"]
-resource_name = "walk"
-length = 0.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LegFront:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.34906584, 0.34906584]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LegBack:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.34906584, -0.34906584]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ArmFront:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.34906584, -0.34906584]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ArmBack:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.34906584, 0.34906584]
 }
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
@@ -182,12 +130,80 @@ tracks/0/keys = {
 "values": [-0.34906584, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LegFront:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.34906584, 0.34906584]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LegBack:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.34906584, -0.34906584]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArmFront:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.34906584, -0.34906584]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArmBack:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.34906584, 0.34906584]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
 _data = {
 &"RESET": SubResource("Animation_qlg0r"),
 &"jump": SubResource("Animation_tuyoq"),
 &"mine": SubResource("Animation_fjrip"),
 &"walk": SubResource("Animation_dqkch")
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiningArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.34906584]
 }
 
 [sub_resource type="Animation" id="Animation_smehm"]
@@ -207,32 +223,19 @@ tracks/0/keys = {
 "values": [0.34906584, -0.34906584]
 }
 
-[sub_resource type="Animation" id="Animation_ur7pv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MiningArm:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.34906584]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
 _data = {
 &"RESET": SubResource("Animation_ur7pv"),
 &"mine": SubResource("Animation_smehm")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(56, 11)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(4, 16)
 shape = SubResource("RectangleShape2D_3vyb7")
 
@@ -296,7 +299,6 @@ libraries = {
 
 [node name="IdleBody" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(2, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("2_g2els")
@@ -322,9 +324,31 @@ position = Vector2(-8.34465e-07, -29)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 
+[node name="MiningToolRight" type="Sprite2D" parent="Mine/MiningArm"]
+unique_name_in_owner = true
+position = Vector2(23.167555, 49.033306)
+rotation = 0.82403255
+scale = Vector2(2, 2)
+texture = ExtResource("5_qlg0r")
+
+[node name="MiningToolLeft" type="Sprite2D" parent="Mine/MiningArm"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-33.307285, 42.98401)
+rotation = 0.82403255
+scale = Vector2(2, 2)
+texture = ExtResource("5_qlg0r")
+flip_h = true
+flip_v = true
+
 [node name="SpriteMA" type="Sprite2D" parent="Mine/MiningArm"]
+unique_name_in_owner = true
 position = Vector2(0, 31)
 scale = Vector2(2, 2)
 texture = ExtResource("4_dqkch")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, 86.5)
+shape = SubResource("RectangleShape2D_qlg0r")
 
 [connection signal="mining_toggled" from="." to="." method="_on_mining_toggled"]
