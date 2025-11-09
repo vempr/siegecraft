@@ -17,6 +17,25 @@ func _ready() -> void:
 	generate_trees()
 	generate_floor()
 	reset_inventory()
+	give_tools()
+
+
+func reset() -> void:
+	map = [[], [], [], [], [], [], [], []]
+	
+	generate_trees()
+	generate_floor()
+	reset_inventory()
+	give_tools()
+	
+	health = 4.5
+	hunger = 6.0
+	active_object = {
+		"object": null,
+		"type": null,
+		"quantity": 0
+	}
+	current_active_slot = 0
 
 
 func generate_trees() -> void:
@@ -107,3 +126,29 @@ func reset_inventory() -> void:
 				"quantity": 0,
 			})
 		inventory.append(arr)
+
+
+func give_tools() -> void:
+	inventory[0][0] = {
+		"object": GLOBAL.ITEM.AXE_DIAMOND,
+		"type": GLOBAL.OBJECT.ITEM,
+		"quantity": 1,
+	}
+	
+	inventory[0][1] = {
+		"object": GLOBAL.ITEM.PICKAXE_DIAMOND,
+		"type": GLOBAL.OBJECT.ITEM,
+		"quantity": 1,
+	}
+	
+	inventory[0][2] = {
+		"object": GLOBAL.ITEM.SHOVEL_DIAMOND,
+		"type": GLOBAL.OBJECT.ITEM,
+		"quantity": 1,
+	}
+	
+	inventory[0][3] = {
+		"object": GLOBAL.ITEM.SWORD_DIAMOND,
+		"type": GLOBAL.OBJECT.ITEM,
+		"quantity": 1,
+	}

@@ -48,7 +48,6 @@ func pickup_object() -> void:
 		queue_free()
 	
 	get_parent().update_active_object.emit()
-	print(STATE.inventory)
 
 
 func find_object() -> Vector2i:

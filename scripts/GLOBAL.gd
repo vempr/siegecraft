@@ -397,7 +397,8 @@ func _ready() -> void:
 				[null, ITEM.DIAMOND, ITEM.DIAMOND],
 				[null, ITEM.STICK, ITEM.DIAMOND],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.AXE,
 		},
 		ITEM.AXE_GOLDEN: {
 			"as_smelter": false,
@@ -405,7 +406,8 @@ func _ready() -> void:
 				[null, ITEM.GOLD, ITEM.GOLD],
 				[null, ITEM.STICK, ITEM.GOLD],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.AXE,
 		},
 		ITEM.AXE_IRON: {
 			"as_smelter": false,
@@ -413,7 +415,8 @@ func _ready() -> void:
 				[null, ITEM.IRON, ITEM.IRON],
 				[null, ITEM.STICK, ITEM.IRON],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.AXE,
 		},
 		ITEM.AXE_STONE: {
 			"as_smelter": false,
@@ -421,7 +424,8 @@ func _ready() -> void:
 				[null, BLOCK.COBBLESTONE, BLOCK.COBBLESTONE],
 				[null, ITEM.STICK, BLOCK.COBBLESTONE],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.AXE,
 		},
 		ITEM.AXE_WOODEN: {
 			"as_smelter": true,
@@ -429,7 +433,8 @@ func _ready() -> void:
 				[null, BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK],
 				[null, ITEM.STICK, BLOCK.WOOD_PLANK],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.AXE,
 		},
 		ITEM.BLAZE_POWDER: {
 			"as_smelter": true,
@@ -465,7 +470,8 @@ func _ready() -> void:
 				[ITEM.DIAMOND, ITEM.DIAMOND, ITEM.DIAMOND],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.PICKAXE,
 		},
 		ITEM.PICKAXE_GOLDEN: {
 			"as_smelter": false,
@@ -473,7 +479,8 @@ func _ready() -> void:
 				[ITEM.GOLD, ITEM.GOLD, ITEM.GOLD],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.PICKAXE,
 		},
 		ITEM.PICKAXE_IRON: {
 			"as_smelter": false,
@@ -481,7 +488,8 @@ func _ready() -> void:
 				[ITEM.IRON, ITEM.IRON, ITEM.IRON],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.PICKAXE,
 		},
 		ITEM.PICKAXE_STONE: {
 			"as_smelter": false,
@@ -489,7 +497,8 @@ func _ready() -> void:
 				[BLOCK.COBBLESTONE, BLOCK.COBBLESTONE, BLOCK.COBBLESTONE],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.PICKAXE,
 		},
 		ITEM.PICKAXE_WOODEN: {
 			"as_smelter": true,
@@ -497,7 +506,8 @@ func _ready() -> void:
 				[BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.PICKAXE,
 		},
 		ITEM.SHOVEL_DIAMOND: {
 			"as_smelter": false,
@@ -505,7 +515,8 @@ func _ready() -> void:
 				[null, ITEM.DIAMOND, null],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.SHOVEL,
 		},
 		ITEM.SHOVEL_GOLD: {
 			"as_smelter": false,
@@ -513,7 +524,8 @@ func _ready() -> void:
 				[null, ITEM.GOLD, null],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.SHOVEL,
 		},
 		ITEM.SHOVEL_IRON: {
 			"as_smelter": false,
@@ -521,7 +533,8 @@ func _ready() -> void:
 				[null, ITEM.IRON, null],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.SHOVEL,
 		},
 		ITEM.SHOVEL_STONE: {
 			"as_smelter": false,
@@ -529,7 +542,8 @@ func _ready() -> void:
 				[null, BLOCK.COBBLESTONE, null],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.SHOVEL,
 		},
 		ITEM.SHOVEL_WOODEN: {
 			"as_smelter": true,
@@ -537,7 +551,8 @@ func _ready() -> void:
 				[null, BLOCK.WOOD_PLANK, null],
 				[null, ITEM.STICK, null],
 				[null, ITEM.STICK, null],
-			]
+			],
+			"break_tool": BREAK_TOOL.SHOVEL,
 		},
 		ITEM.STICK: {
 			"as_smelter": true,

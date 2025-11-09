@@ -19,10 +19,20 @@ const MAP_SIZE_X := TILE_SIZE * 100
 func _ready() -> void:
 	sprite.texture = load(GLOBAL.block_textures.get(block))
 	breaking_sprite.visible = false
+	%AnimatedSprite.speed_scale = 1.0 / (break_difficulty + 1)
+	
+	if block == GLOBAL.BLOCK.BEDROCK:
+		%AnimatedSprite.speed_scale = 0.01
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("mine") && can_mine && !is_mining:
+		var ao = STATE.active_object
+		if ao.type == GLOBAL.OBJECT.ITEM:
+			if "break_tool" in GLOBAL.items[ao.object]:
+				if correct_tool == GLOBAL.items[ao.object].break_tool:
+					%AnimatedSprite.speed_scale += 1.5
+		
 		player.mining_toggled.emit(true)
 		is_mining = true
 		breaking_sprite.visible = true

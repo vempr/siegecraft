@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://q3lpfa8ofprr" path="res://assets/aseprite/character/orph-idle.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bws110lxekq1v" path="res://assets/aseprite/character/orph-legless.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cshndfbyvvage" path="res://assets/aseprite/character/orph-limb.png" id="4_dqkch"]
-[ext_resource type="Texture2D" uid="uid://djrygdkegou66" path="res://assets/aseprite/items/pickaxe-diamond.png" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dsxvwtxkj5237" path="res://assets/aseprite/items/axe-diamond.png" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(32, 152)
@@ -267,10 +267,11 @@ scale = Vector2(0.99999994, 0.99999994)
 
 [node name="MiningToolRight" type="Sprite2D" parent="Mine/MiningArm"]
 unique_name_in_owner = true
-position = Vector2(23.167555, 49.033306)
-rotation = 0.82403255
+position = Vector2(34.953228, 47.982006)
+rotation = -0.7552576
 scale = Vector2(2, 2)
-texture = ExtResource("5_qlg0r")
+texture = ExtResource("6_tuyoq")
+flip_v = true
 
 [node name="MiningToolLeft" type="Sprite2D" parent="Mine/MiningArm"]
 unique_name_in_owner = true
@@ -278,7 +279,7 @@ visible = false
 position = Vector2(-33.307285, 42.98401)
 rotation = 0.82403255
 scale = Vector2(2, 2)
-texture = ExtResource("5_qlg0r")
+texture = ExtResource("6_tuyoq")
 flip_h = true
 flip_v = true
 

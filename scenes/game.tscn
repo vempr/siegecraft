@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7lkwkw7fpgty"]
+[gd_scene load_steps=6 format=3 uid="uid://c7lkwkw7fpgty"]
 
 [ext_resource type="Script" uid="uid://dbu5qlsbyx33h" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dg41qxbxim2w7" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://d3xgvp86ms28m" path="res://scenes/hud.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dffwgckgssvwd" path="res://scenes/game_over.tscn" id="4_lbhrr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 
 [node name="Game" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
@@ -15,8 +19,20 @@ position = Vector2(959, -265)
 unique_name_in_owner = true
 
 [node name="HungerTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 autostart = true
+
+[node name="GameOver" parent="." instance=ExtResource("4_lbhrr")]
+unique_name_in_owner = true
+process_mode = 3
+layer = 5
+visible = false
+
+[node name="VoidArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VoidArea"]
+position = Vector2(11, 2973)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
 [connection signal="inventory_toggled" from="." to="Player" method="_on_game_inventory_toggled"]
 [connection signal="inventory_toggled" from="." to="HUD" method="_on_game_inventory_toggled"]
@@ -24,3 +40,4 @@ autostart = true
 [connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
 [connection signal="active_object_switched" from="HUD" to="Player" method="_on_hud_active_object_switched"]
 [connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]
+[connection signal="body_entered" from="VoidArea" to="." method="_on_void_area_body_entered"]

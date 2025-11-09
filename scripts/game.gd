@@ -10,6 +10,7 @@ var inventory_open := false
 
 
 func _ready() -> void:
+	get_tree().paused = false
 	render_blocks()
 	spawn_player()
 
@@ -27,6 +28,7 @@ func render_blocks() -> void:
 			var block_instance = BlockScene.instantiate()
 			block_instance.block = block_type
 			block_instance.position = Vector2(x * TILE_SIZE - MAP_SIZE_X / 2.0, y * TILE_SIZE)
+			block_instance.correct_tool = GLOBAL.blocks[block_type].break_tool
 			add_child(block_instance)
 
 
@@ -37,6 +39,12 @@ func spawn_player() -> void:
 
 
 func _process(_delta: float) -> void:
+	if STATE.hunger <= 0.0:
+		%Player.visible = false
+		%GameOver/Label.text = "you died of hunger!"
+		%GameOver.visible = true
+		get_tree().paused = true
+	
 	var ao = STATE.active_object
 	if Input.is_action_just_pressed("eat") && STATE.hunger < 6 && ao.object == GLOBAL.ITEM.APPLE && ao.quantity > 0:
 		STATE.hunger = min(STATE.hunger + 2, 6)
@@ -44,7 +52,6 @@ func _process(_delta: float) -> void:
 		update_slot_state()
 	
 	if Input.is_action_just_pressed("place_block") && ao.type == GLOBAL.OBJECT.BLOCK && ao.quantity > 0:
-		
 		var mouse_pos = get_global_mouse_position()
 		var grid_x = int(round((mouse_pos.x + MAP_SIZE_X / 2.0) / TILE_SIZE))
 		var grid_y = int(round(mouse_pos.y / TILE_SIZE))
@@ -103,3 +110,11 @@ func _input(event: InputEvent) -> void:
 
 func _on_hunger_timer_timeout() -> void:
 	STATE.hunger -= 0.5
+
+
+func _on_void_area_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		%Player.visible = false
+		%GameOver/Label.text = "you died to the void!"
+		%GameOver.visible = true
+		get_tree().paused = true

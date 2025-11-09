@@ -104,8 +104,8 @@ func update_coordinates() -> void:
 	var x = snapped(player.position.x / TILE_SIZE, 0.1)
 	var y = snapped((-player.position.y + Y_OFFSET) / TILE_SIZE, 0.1)
 	
-	%Coordinates.text = "x: " + str(x) + "\n"
-	%Coordinates.text += "y: " + str(y)
+	%Coordinates.text = "x: " + str(x) + " (" + str(snapped(player.position.x, 0.1)) + ")" + "\n"
+	%Coordinates.text += "y: " + str(y) + " (" + str(snapped(player.position.y, 0.1)) + ")"
 
 
 func update_health() -> void:
