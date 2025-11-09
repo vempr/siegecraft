@@ -77,7 +77,6 @@ func update_hunger() -> void:
 	for i in range(len(apples)):
 		var apple = apples[i]
 		var hunger_left = STATE.hunger - i
-		print(apple.name)
 		
 		var full_apple_sprite = apple.get_node("Apple")
 		var half_apple_sprite = apple.get_node("AppleHalf")

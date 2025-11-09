@@ -122,6 +122,8 @@ var item_textures := {
 	ITEM.SWORD_WOODEN: "res://assets/aseprite/items/sword-wooden.png",
 }
 
+enum BREAK_DIFFICULTY { EASY, MEDIUM, HARD }
+enum BREAK_TOOL { PICKAXE, AXE, SHOVEL }
 
 var blocks
 var items
@@ -135,6 +137,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.CHEST: {
 			"as_smelter": true,
@@ -146,6 +150,8 @@ func _ready() -> void:
 				[BLOCK.WOOD_PLANK, null, BLOCK.WOOD_PLANK],
 				[BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK]
 			],
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.AXE
 		},
 		BLOCK.COAL_ORE: {
 			"as_smelter": false,
@@ -153,6 +159,8 @@ func _ready() -> void:
 			"smelting_result": ITEM.COAL,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.COBBLESTONE: {
 			"as_smelter": false,
@@ -160,6 +168,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.CRAFTING_TABLE: {
 			"as_smelter": true,
@@ -170,6 +180,8 @@ func _ready() -> void:
 				[BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK],
 				[BLOCK.WOOD_PLANK, BLOCK.WOOD_PLANK],
 			],
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.AXE
 		},
 		BLOCK.DEEPSLATE_BRICK: {
 			"as_smelter": false,
@@ -177,6 +189,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.DIAMOND_ORE: {
 			"as_smelter": false,
@@ -184,6 +198,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.HARD,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.DIRT: {
 			"as_smelter": false,
@@ -191,6 +207,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.SHOVEL
 		},
 		BLOCK.END_PORTAL_FRAME: {
 			"as_smelter": false,
@@ -198,6 +216,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.END_PORTAL_FRAME_EYE: {
 			"as_smelter": false,
@@ -205,6 +225,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.END_STONE: {
 			"as_smelter": false,
@@ -212,6 +234,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.FURNACE: {
 			"as_smelter": false,
@@ -223,6 +247,8 @@ func _ready() -> void:
 				[BLOCK.COBBLESTONE, null, BLOCK.COBBLESTONE],
 				[BLOCK.COBBLESTONE, BLOCK.COBBLESTONE, BLOCK.COBBLESTONE]
 			],
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.GOLD_BLOCK: {
 			"as_smelter": false,
@@ -234,6 +260,8 @@ func _ready() -> void:
 				[ITEM.GOLD, ITEM.GOLD, ITEM.GOLD],
 				[ITEM.GOLD, ITEM.GOLD, ITEM.GOLD]
 			],
+			"break_difficulty": BREAK_DIFFICULTY.HARD,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.GOLD_ORE: {
 			"as_smelter": false,
@@ -241,6 +269,8 @@ func _ready() -> void:
 			"smelting_result": ITEM.GOLD,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.GRASS: {
 			"as_smelter": false,
@@ -248,6 +278,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.SHOVEL
 		},
 		BLOCK.IRON_ORE: {
 			"as_smelter": false,
@@ -255,6 +287,8 @@ func _ready() -> void:
 			"smelting_result": ITEM.IRON,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.LAVA: {
 			"as_smelter": false,
@@ -262,6 +296,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.LEAF: {
 			"as_smelter": false,
@@ -269,6 +305,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.SHOVEL
 		},
 		BLOCK.NETHER_BRICK: {
 			"as_smelter": false,
@@ -276,6 +314,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.NETHERRACK: {
 			"as_smelter": false,
@@ -283,6 +323,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.OBSIDIAN: {
 			"as_smelter": false,
@@ -290,6 +332,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.STONE: {
 			"as_smelter": false,
@@ -297,6 +341,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.STONE_BRICK: {
 			"as_smelter": false,
@@ -304,6 +350,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.WATER: {
 			"as_smelter": false,
@@ -311,6 +359,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.MEDIUM,
+			"break_tool": BREAK_TOOL.PICKAXE
 		},
 		BLOCK.WOOD_LOG: {
 			"as_smelter": false,
@@ -318,6 +368,8 @@ func _ready() -> void:
 			"smelting_result": ITEM.COAL,
 			"mineable": true,
 			"recipe": null,
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.AXE
 		},
 		BLOCK.WOOD_PLANK: {
 			"as_smelter": false,
@@ -325,6 +377,8 @@ func _ready() -> void:
 			"smelting_result": null,
 			"mineable": true,
 			"recipe": [[BLOCK.WOOD_LOG]],
+			"break_difficulty": BREAK_DIFFICULTY.EASY,
+			"break_tool": BREAK_TOOL.AXE
 		},
 	}
 	
