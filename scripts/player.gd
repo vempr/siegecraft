@@ -18,6 +18,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	
 	if !is_on_floor():
 		velocity += get_gravity() * 2.5 * delta
 	
@@ -27,6 +29,13 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var direction := Input.get_axis("move_left", "move_right")
+	
+	%MiningArm.look_at(get_global_mouse_position())
+	%MiningArm.rotation -= deg_to_rad(90)
+	
+	var normalized_rotation = fmod(rad_to_deg(%MiningArm.rotation), 360.0)
+	if normalized_rotation < 0:
+		normalized_rotation += 360.0
 	
 	if !is_mining:
 		if is_on_floor():
@@ -39,35 +48,27 @@ func _physics_process(delta: float) -> void:
 				%IdleBody.visible = true
 				%Walk.visible = false
 	
-	if direction > 0:
+	if direction > 0 || (normalized_rotation > 180 && %Mine.visible):
 		%WalkingBody.flip_h = false
 		%IdleBody.flip_h = false
 		%SpriteAB.flip_h = false
-		%SpriteAF.flip_h = false
 		%SpriteLB.flip_h = false
 		%SpriteLF.flip_h = false
 		%SpriteMA.flip_h = false
-	elif direction < 0:
+	elif direction < 0 || (normalized_rotation < 180 && %Mine.visible):
 		%WalkingBody.flip_h = true
 		%IdleBody.flip_h = true
 		%SpriteAB.flip_h = true
-		%SpriteAF.flip_h = true
 		%SpriteLB.flip_h = true
 		%SpriteLF.flip_h = true
 		%SpriteMA.flip_h = true
 	
-	if direction != 0:
-		%Mine.visible = false
+	if %SpriteMA.flip_h:
 		%MiningToolRight.visible = false
-		%MiningToolLeft.visible = false
+		%MiningToolLeft.visible = true
 	else:
-		%Mine.visible = true
-		if %SpriteMA.flip_h:
-			%MiningToolRight.visible = false
-			%MiningToolLeft.visible = true
-		else:
-			%MiningToolRight.visible = true
-			%MiningToolLeft.visible = false
+		%MiningToolRight.visible = true
+		%MiningToolLeft.visible = false
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -81,9 +82,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
-	
-	%MiningArm.look_at(get_global_mouse_position())
-	%MiningArm.rotation -= deg_to_rad(90)
 	
 	if is_mining:
 		mining_time += delta
@@ -109,3 +107,20 @@ func _on_mining_toggled(m: bool) -> void:
 		%IdleBody.visible = false
 		# %AnimationPlayerMine.stop()
 		# %AnimationPlayerMine.play("RESET")
+
+
+func _on_hud_active_object_switched() -> void:
+	if STATE.active_object.object != null:
+		if STATE.active_object.type == GLOBAL.OBJECT.BLOCK:
+			%MiningToolLeft.texture = load(GLOBAL.block_textures[STATE.active_object.object])
+			%MiningToolRight.texture = load(GLOBAL.block_textures[STATE.active_object.object])
+		else:
+			%MiningToolLeft.texture = load(GLOBAL.item_textures[STATE.active_object.object])
+			%MiningToolRight.texture = load(GLOBAL.item_textures[STATE.active_object.object])
+	else:
+		%MiningToolLeft.texture = null
+		%MiningToolRight.texture = null
+
+
+func _on_game_update_active_object() -> void:
+	_on_hud_active_object_switched()

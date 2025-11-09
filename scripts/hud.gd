@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal active_object_switched
+
 @onready var player := %Player
 
 const TILE_SIZE := 96
@@ -15,6 +17,51 @@ func _ready() -> void:
 	toggle_inventory(false)
 	reset_hearts()
 	reset_apples()
+	select_hotbar_slot(0)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		for i in range(8):
+			if event.keycode == KEY_1 + i:
+				select_hotbar_slot(i)
+				break
+
+
+func select_hotbar_slot(slot_index: int) -> void:
+	STATE.current_active_slot = slot_index
+	
+	for i in range(len(bar_slots)):
+		if i == slot_index:
+			bar_slots[slot_index].trigger_active.emit(true)
+			var ao = STATE.inventory[0][slot_index]
+			STATE.active_object = {
+				"object": ao["object"],
+				"type": ao["type"],
+				"quantity": ao["quantity"],
+			}
+			active_object_switched.emit()
+		else:
+			bar_slots[i].trigger_active.emit(false)
+
+
+func check_active_slot_update() -> void:
+	var current_slot_content = STATE.inventory[0][STATE.current_active_slot]
+	
+	if current_slot_content.quantity <= 0:
+		STATE.active_object = {
+			"object": null,
+			"type": null,
+			"quantity": 0,
+		}
+		active_object_switched.emit()
+	elif STATE.active_object.object != current_slot_content.object || STATE.active_object.type != current_slot_content.type:
+		STATE.active_object = {
+			"object": current_slot_content["object"],
+			"type": current_slot_content["type"],
+			"quantity": current_slot_content["quantity"],
+		}
+		active_object_switched.emit()
 
 
 func toggle_inventory(isVisible: bool = true) -> void:
@@ -103,11 +150,10 @@ func update_hunger() -> void:
 
 func update_bar() -> void:
 	for i in range(len(bar_slots)):
-		if STATE.inventory[0][i]["object"] == null:
-			continue
-		
 		bar_slots[i].properties = STATE.inventory[0][i]
 		bar_slots[i].update()
+	
+	check_active_slot_update()
 
 
 func update_inventory() -> void:

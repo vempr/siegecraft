@@ -5,6 +5,12 @@ var inventory := []
 
 var health := 4.5
 var hunger := 6.0
+var active_object = {
+	"object": null,
+	"type": null,
+	"quantity": 0
+}
+var current_active_slot := 0
 
 
 func _ready() -> void:

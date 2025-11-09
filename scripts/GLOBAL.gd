@@ -135,7 +135,7 @@ func _ready() -> void:
 	blocks = {
 		BLOCK.BEDROCK: {
 			"as_smelter": false,
-			"breaking_result": null,
+			"breaking_result": BLOCK.BEDROCK,
 			"smelting_result": null,
 			"mineable": false,
 			"recipe": null,

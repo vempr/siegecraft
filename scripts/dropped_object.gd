@@ -5,6 +5,11 @@ var object = GLOBAL.BLOCK.DIRT # default object
 
 
 func _ready() -> void:
+	position.x += randi_range(-10, 10)
+	sleeping = false
+	can_sleep = false
+	gravity_scale = 1.0
+	
 	if type == GLOBAL.OBJECT.BLOCK:
 		%Sprite.texture = load(GLOBAL.block_textures[object])
 	else:
@@ -29,14 +34,20 @@ func pickup_object() -> void:
 			"type": type,
 			"quantity": 1,
 		}
+		if new_slot_pos.x == 0 && new_slot_pos.y == STATE.current_active_slot:
+			STATE.active_object = STATE.inventory[0][STATE.current_active_slot].duplicate()
 		queue_free()
 	else:
 		STATE.inventory[existing_stack_pos.x][existing_stack_pos.y]["quantity"] += 1
 		if STATE.inventory[existing_stack_pos.x][existing_stack_pos.y]["quantity"] > 64:
 			STATE.inventory[existing_stack_pos.x][existing_stack_pos.y]["quantity"] = 64
-		else:
-			queue_free()
+		
+		if existing_stack_pos.x == 0 && existing_stack_pos.y == STATE.current_active_slot:
+			STATE.active_object = STATE.inventory[0][STATE.current_active_slot].duplicate()
+		
+		queue_free()
 	
+	get_parent().update_active_object.emit()
 	print(STATE.inventory)
 
 

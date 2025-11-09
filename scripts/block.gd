@@ -12,6 +12,9 @@ var correct_tool: GLOBAL.BREAK_TOOL
 var can_mine := false
 var is_mining := false
 
+const TILE_SIZE := 96
+const MAP_SIZE_X := TILE_SIZE * 100
+
 
 func _ready() -> void:
 	sprite.texture = load(GLOBAL.block_textures.get(block))
@@ -43,6 +46,11 @@ func _on_mouse_exited() -> void:
 func _on_animated_sprite_animation_finished() -> void:
 	player.mining_toggled.emit(false)
 	
+	var grid_x = int(round((position.x + MAP_SIZE_X / 2.0) / TILE_SIZE))
+	var grid_y = int(round(position.y / TILE_SIZE))
+	if grid_y >= 0 && grid_y < STATE.map.size() && grid_x >= 0 && grid_x < STATE.map[grid_y].size():
+		STATE.map[grid_y][grid_x] = null
+	
 	var dropped_block = DroppedObjectScene.instantiate()
 	dropped_block.object = GLOBAL.blocks[block]["breaking_result"]
 	
@@ -54,5 +62,7 @@ func _on_animated_sprite_animation_finished() -> void:
 	dropped_block.position = position
 	get_parent().add_child(dropped_block)
 	
-	await get_tree().physics_frame
+	var tree = get_tree()
+	for i in range(3):
+		await tree.physics_frame
 	queue_free()
